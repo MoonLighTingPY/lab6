@@ -8,7 +8,12 @@
     "category": "Historical",
     "price": 1488,
     "picture": "https://picsum.photos/200/300?random=1",
-    "stock": 7
+    "colors": ["red", "blue", "green"],
+    "stock": {
+      "red": 10,
+      "blue": 5,
+      "green": 2
+    }
   },
   {
     "id": 2,
@@ -19,7 +24,12 @@
     "category": "Fiction",
     "price": 1337,
     "picture": "https://picsum.photos/200/300?random=2",
-    "stock": 10
+    "colors": ["black", "gold", "silver"],
+    "stock": {
+      "black": 4,
+      "gold": 3,
+      "silver": 3
+    }
   },
   {
     "id": 3,
@@ -30,7 +40,12 @@
     "category": "Historical Fiction",
     "price": 1299,
     "picture": "https://picsum.photos/200/300?random=3",
-    "stock": 12
+    "colors": ["gray", "silver", "white"],
+    "stock": {
+      "gray": 6,
+      "silver": 4,
+      "white": 2
+    }
   },
   {
     "id": 4,
@@ -41,7 +56,12 @@
     "category": "Historical",
     "price": 1599,
     "picture": "https://picsum.photos/200/300?random=4",
-    "stock": 8
+    "colors": ["brown", "green", "beige"],
+    "stock": {
+      "brown": 3,
+      "green": 3,
+      "beige": 2
+    }
   },
   {
     "id": 5,
@@ -52,7 +72,12 @@
     "category": "Drama",
     "price": 999,
     "picture": "https://picsum.photos/200/300?random=5",
-    "stock": 5
+    "colors": ["purple", "black", "gray"],
+    "stock": {
+      "purple": 2,
+      "black": 2,
+      "gray": 1
+    }
   },
   {
     "id": 6,
@@ -63,7 +88,12 @@
     "category": "Thriller",
     "price": 899,
     "picture": "https://picsum.photos/200/300?random=6",
-    "stock": 3
+    "colors": ["red", "yellow", "orange"],
+    "stock": {
+      "red": 1,
+      "yellow": 1,
+      "orange": 1
+    }
   },
   {
     "id": 7,
@@ -74,7 +104,12 @@
     "category": "Political Fiction",
     "price": 1399,
     "picture": "https://picsum.photos/200/300?random=7",
-    "stock": 9
+    "colors": ["dark blue", "white", "black"],
+    "stock": {
+      "dark blue": 4,
+      "white": 3,
+      "black": 2
+    }
   },
   {
     "id": 8,
@@ -85,7 +120,12 @@
     "category": "Fantasy",
     "price": 1799,
     "picture": "https://picsum.photos/200/300?random=8",
-    "stock": 17
+    "colors": ["green", "brown", "gold"],
+    "stock": {
+      "green": 8,
+      "brown": 6,
+      "gold": 3
+    }
   },
   {
     "id": 9,
@@ -96,7 +136,12 @@
     "category": "Romance",
     "price": 1099,
     "picture": "https://picsum.photos/200/300?random=9",
-    "stock": 6
+    "colors": ["pink", "white", "lavender"],
+    "stock": {
+      "pink": 2,
+      "white": 3,
+      "lavender": 1
+    }
   },
   {
     "id": 10,
@@ -107,7 +152,12 @@
     "category": "Mystery",
     "price": 1299,
     "picture": "https://picsum.photos/200/300?random=10",
-    "stock": 11
+    "colors": ["dark gray", "light gray", "black"],
+    "stock": {
+      "dark gray": 4,
+      "light gray": 4,
+      "black": 3
+    }
   },
   {
     "id": 11,
@@ -118,7 +168,12 @@
     "category": "Literary Fiction",
     "price": 1199,
     "picture": "https://picsum.photos/200/300?random=11",
-    "stock": 4
+    "colors": ["yellow", "orange", "brown"],
+    "stock": {
+      "yellow": 1,
+      "orange": 2,
+      "brown": 1
+    }
   },
   {
     "id": 12,
@@ -129,6 +184,11 @@
     "category": "Thriller",
     "price": 1499,
     "picture": "https://picsum.photos/200/300?random=12",
-    "stock": 13
+    "colors": ["gold", "silver", "white"],
+    "stock": {
+      "gold": 6,
+      "silver": 4,
+      "white": 3
+    }
   }
 ]

@@ -1,14 +1,18 @@
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Typography, Button, Card, CardContent, CardMedia, Alert } from '@mui/material';
+import { Box, Typography, Button, Card, CardContent, CardMedia, Alert, TextField } from '@mui/material';
 import { addToCart } from '../redux/cartSlice';
+import CustomSelect from './CustomSelect.jsx';
 
 const BookDetails = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [feedback, setFeedback] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
+  const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -17,6 +21,7 @@ const BookDetails = () => {
     axios.get(`http://localhost:5000/api/books/${id}`)
       .then(response => {
         setBook(response.data);
+        setSelectedColor(response.data.colors[0]); // Set default color
       })
       .catch(error => console.error('Error fetching book details:', error));
   }, [id]);
@@ -24,15 +29,16 @@ const BookDetails = () => {
   if (!book) return <Typography>Loading...</Typography>;
 
   const handleAddToCart = () => {
-    const cartItem = cart.find(item => item.id === book.id);
+    const cartItem = cart.find(item => item.id === book.id && item.color === selectedColor);
     const totalBooksInCart = cart.reduce((total, item) => total + item.quantity, 0);
-    const updatedQuantity = cartItem ? cartItem.quantity + 1 : 1;
+    const updatedQuantity = cartItem ? cartItem.quantity + quantity : quantity;
   
-    if (cartItem && cartItem.quantity >= book.stock) {
-      setFeedback('You cannot add more of this book than is in stock.');
+    if (updatedQuantity > book.stock[selectedColor]) {
+      const availableColors = Object.keys(book.stock).filter(color => book.stock[color] > 0 && color !== selectedColor);
+      setFeedback(`You cannot add more of this book in ${selectedColor} than is in stock. Available colors: ${availableColors.join(', ')}`);
     } else {
-      dispatch(addToCart(book));
-      setFeedback(`Book added to cart successfully! You have ${updatedQuantity} of this book in your cart. Total books in cart: ${totalBooksInCart + 1}`);
+      dispatch(addToCart({ ...book, color: selectedColor, quantity, stock: book.stock[selectedColor] }));
+      setFeedback(`Book added to cart successfully! You have ${updatedQuantity} of this book in ${selectedColor} in your cart. Total books in cart: ${totalBooksInCart + quantity}`);
     }
   };
 
@@ -52,10 +58,24 @@ const BookDetails = () => {
           <Typography>Price: ${book.price}</Typography>
           <Typography>Description: {book.description}</Typography>
           <Typography>Category: {book.category}</Typography>
-          <Typography>Stock: {book.stock}</Typography> {/* Display stock */}
+          <Typography>Stock: {book.stock[selectedColor]} ({selectedColor})</Typography> {/* Display stock for selected color */}
         </CardContent>
       </Card>
       <Box mt={4}>
+        <CustomSelect
+          value={selectedColor}
+          onChange={e => setSelectedColor(e.target.value)}
+          label="Color"
+          items={Object.keys(book.stock).map(color => ({ value: color, label: color }))}
+        />
+        <TextField
+          label="Quantity"
+          type="number"
+          value={quantity}
+          onChange={e => setQuantity(Number(e.target.value))}
+          inputProps={{ min: 1, max: book.stock[selectedColor] }}
+          sx={{ marginLeft: '16px' }}
+        />
         <Button variant="contained" onClick={() => navigate(-1)} style={{ marginRight: '16px' }}>
           Back
         </Button>
@@ -65,7 +85,7 @@ const BookDetails = () => {
       </Box>
       {feedback && (
         <Box mt={2}>
-          <Alert severity={book.stock > 0 ? 'success' : 'error'}>{feedback}</Alert>
+          <Alert severity={book.stock[selectedColor] > 0 ? 'success' : 'error'}>{feedback}</Alert>
         </Box>
       )}
     </Box>
