@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button, Typography, Box, Grid, Alert } from '@mui/material';
 
 const CartPage = () => {
-  const cart = useSelector((state) => state.cart || []); // Ensure cart is an array
+  const cart = useSelector((state) => Array.isArray(state.cart) ? state.cart : []); // Ensure cart is an array
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [feedback, setFeedback] = useState('');

@@ -1,4 +1,3 @@
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -15,7 +14,10 @@ const BookDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => {
+    console.log('Cart state:', state.cart);
+    return Array.isArray(state.cart) ? state.cart : [];
+  });
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/books/${id}`)
