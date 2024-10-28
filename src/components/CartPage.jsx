@@ -1,4 +1,4 @@
-// CartPage.jsx
+
 import { useSelector, useDispatch } from 'react-redux';
 import { incrementQuantity, decrementQuantity, removeFromCart } from '../redux/cartSlice';
 import { Link, useNavigate } from 'react-router-dom';
@@ -29,7 +29,7 @@ const CartPage = () => {
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <Button onClick={() => dispatch(decrementQuantity(item.id))}>-</Button>
                   <span style={{ margin: '0 10px' }}>{item.quantity}</span>
-                  <Button onClick={() => dispatch(incrementQuantity(item.id))}>+</Button>
+                  <Button onClick={() => dispatch(incrementQuantity(item.id))} disabled={item.quantity >= item.stock}>+</Button>
                 </div>
                 <span>${(item.price * item.quantity).toFixed(2)}</span>
                 <Button variant="outlined" onClick={() => dispatch(removeFromCart(item.id))}>

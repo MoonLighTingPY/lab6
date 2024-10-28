@@ -1,15 +1,17 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { Box, Typography, Button, Card, CardContent } from '@mui/material';
+import { Box, Typography, Button, Card, CardContent, CardMedia, Alert } from '@mui/material';
 import { addToCart } from '../redux/cartSlice';
 
 const BookDetails = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
+  const [feedback, setFeedback] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/books/${id}`)
@@ -22,12 +24,27 @@ const BookDetails = () => {
   if (!book) return <Typography>Loading...</Typography>;
 
   const handleAddToCart = () => {
-    dispatch(addToCart(book));
+    const cartItem = cart.find(item => item.id === book.id);
+    const totalBooksInCart = cart.reduce((total, item) => total + item.quantity, 0);
+    const updatedQuantity = cartItem ? cartItem.quantity + 1 : 1;
+  
+    if (cartItem && cartItem.quantity >= book.stock) {
+      setFeedback('You cannot add more of this book than is in stock.');
+    } else {
+      dispatch(addToCart(book));
+      setFeedback(`Book added to cart successfully! You have ${updatedQuantity} of this book in your cart. Total books in cart: ${totalBooksInCart + 1}`);
+    }
   };
 
   return (
     <Box mt={4}>
       <Card>
+        <CardMedia
+          component="img"
+          height="300"
+          image={book.picture} // Assuming 'picture' field exists in books.json
+          alt={book.title}
+        />
         <CardContent>
           <Typography variant="h4">{book.title}</Typography>
           <Typography color="textSecondary">By: {book.author}</Typography>
@@ -35,6 +52,7 @@ const BookDetails = () => {
           <Typography>Price: ${book.price}</Typography>
           <Typography>Description: {book.description}</Typography>
           <Typography>Category: {book.category}</Typography>
+          <Typography>Stock: {book.stock}</Typography> {/* Display stock */}
         </CardContent>
       </Card>
       <Box mt={4}>
@@ -45,6 +63,11 @@ const BookDetails = () => {
           Add to Cart
         </Button>
       </Box>
+      {feedback && (
+        <Box mt={2}>
+          <Alert severity={book.stock > 0 ? 'success' : 'error'}>{feedback}</Alert>
+        </Box>
+      )}
     </Box>
   );
 };

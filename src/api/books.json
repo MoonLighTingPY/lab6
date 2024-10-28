@@ -7,7 +7,8 @@
     "pages": 300,
     "category": "Historical",
     "price": 1488,
-    "picture": "https://picsum.photos/200/300?random=1"
+    "picture": "https://picsum.photos/200/300?random=1",
+    "stock": 7
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "pages": 111,
     "category": "Fiction",
     "price": 1337,
-    "picture": "https://picsum.photos/200/300?random=2"
+    "picture": "https://picsum.photos/200/300?random=2",
+    "stock": 10
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "pages": 450,
     "category": "Historical Fiction",
     "price": 1299,
-    "picture": "https://picsum.photos/200/300?random=3"
+    "picture": "https://picsum.photos/200/300?random=3",
+    "stock": 12
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "pages": 320,
     "category": "Historical",
     "price": 1599,
-    "picture": "https://picsum.photos/200/300?random=4"
+    "picture": "https://picsum.photos/200/300?random=4",
+    "stock": 8
   },
   {
     "id": 5,
@@ -47,7 +51,8 @@
     "pages": 275,
     "category": "Drama",
     "price": 999,
-    "picture": "https://picsum.photos/200/300?random=5"
+    "picture": "https://picsum.photos/200/300?random=5",
+    "stock": 5
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "pages": 210,
     "category": "Thriller",
     "price": 899,
-    "picture": "https://picsum.photos/200/300?random=6"
+    "picture": "https://picsum.photos/200/300?random=6",
+    "stock": 3
   },
   {
     "id": 7,
@@ -67,7 +73,8 @@
     "pages": 390,
     "category": "Political Fiction",
     "price": 1399,
-    "picture": "https://picsum.photos/200/300?random=7"
+    "picture": "https://picsum.photos/200/300?random=7",
+    "stock": 9
   },
   {
     "id": 8,
@@ -77,7 +84,8 @@
     "pages": 500,
     "category": "Fantasy",
     "price": 1799,
-    "picture": "https://picsum.photos/200/300?random=8"
+    "picture": "https://picsum.photos/200/300?random=8",
+    "stock": 17
   },
   {
     "id": 9,
@@ -87,7 +95,8 @@
     "pages": 280,
     "category": "Romance",
     "price": 1099,
-    "picture": "https://picsum.photos/200/300?random=9"
+    "picture": "https://picsum.photos/200/300?random=9",
+    "stock": 6
   },
   {
     "id": 10,
@@ -97,7 +106,8 @@
     "pages": 350,
     "category": "Mystery",
     "price": 1299,
-    "picture": "https://picsum.photos/200/300?random=10"
+    "picture": "https://picsum.photos/200/300?random=10",
+    "stock": 11
   },
   {
     "id": 11,
@@ -107,7 +117,8 @@
     "pages": 315,
     "category": "Literary Fiction",
     "price": 1199,
-    "picture": "https://picsum.photos/200/300?random=11"
+    "picture": "https://picsum.photos/200/300?random=11",
+    "stock": 4
   },
   {
     "id": 12,
@@ -117,6 +128,7 @@
     "pages": 450,
     "category": "Thriller",
     "price": 1499,
-    "picture": "https://picsum.photos/200/300?random=12"
+    "picture": "https://picsum.photos/200/300?random=12",
+    "stock": 13
   }
 ]
