@@ -8,6 +8,8 @@ import BookDetails from './components/BookDetails.jsx';
 import CartPage from './components/CartPage.jsx';
 import CheckoutPage from './components/CheckoutPage.jsx';
 import SuccessPage from './components/SuccessPage.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 import './App.css';
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/success" element={<SuccessPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
       <Footer />

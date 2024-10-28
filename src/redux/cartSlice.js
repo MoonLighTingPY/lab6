@@ -42,8 +42,11 @@ const cartSlice = createSlice({
       if (!Array.isArray(state)) return []; // Ensure state is an array
       return state.filter(i => !(i.id === action.payload.id && i.color === action.payload.color));
     },
+    clearCart: () => {
+      return [];
+    },
   },
 });
 
-export const { addToCart, incrementQuantity, decrementQuantity, removeFromCart } = cartSlice.actions;
+export const { addToCart, incrementQuantity, decrementQuantity, removeFromCart, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { incrementQuantity, decrementQuantity, removeFromCart } from '../redux/cartSlice';
+import { saveCart } from '../redux/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Typography, Box, Grid, Alert } from '@mui/material';
 
@@ -39,6 +40,15 @@ const CartPage = () => {
       }
     });
   }, [cart]);
+
+  useEffect(() => {
+    // Save cart data when the user logs in or registers
+    const handleUserChange = () => {
+      dispatch(saveCart(cart));
+    };
+
+    handleUserChange();
+  }, [cart, dispatch]);
 
   return (
     <div>
