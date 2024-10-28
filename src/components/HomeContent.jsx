@@ -33,20 +33,29 @@ function HomeContent() {
 
   return (
     <Box mt={4}>
-      <Typography variant="h4" gutterBottom>
+      <Typography 
+        variant="h4" 
+        gutterBottom 
+        sx={{ 
+          color: 'var(--primary-color)', 
+          fontWeight: 'bold', 
+          textAlign: 'center', 
+          marginBottom: '20px' 
+        }}
+      >
         Welcome, {user.isAuthenticated ? user.user.username : 'Guest'}!
-        
       </Typography>
       {featuredBook && (
         <Box mb={4}>
-          <Card>
+          <Card sx={{ borderRadius: '16px 16px 0 0' }}>
             <CardContent className="flex-container">
               <div className="left-section">
                 <CardMedia
                   component="img"
-                  height="140"
+                  height="300"
                   image={featuredBook.picture}
                   alt={featuredBook.title}
+                  sx={{ borderRadius: '16px 16px 0 0' }}
                 />
                 <Typography variant="h4">{featuredBook.title}</Typography>
               </div>
@@ -63,14 +72,15 @@ function HomeContent() {
       <Grid container spacing={4}>
         {otherBooks.map((book, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
-            <Card>
+            <Card sx={{ borderRadius: '16px 16px 0 0', boxShadow: 'none' }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image={book.picture}
+                alt={book.title}
+                sx={{ borderRadius: '16px 16px 0 0' }}
+              />
               <CardContent>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={book.picture}
-                  alt={book.title}
-                />
                 <Typography variant="h5">{book.title}</Typography>
                 <Typography color="textSecondary">By: {book.author}</Typography>
                 <Typography>Pages: {book.pages}</Typography>

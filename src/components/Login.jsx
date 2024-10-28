@@ -31,6 +31,10 @@ const Login = () => {
   });
 
   return (
+    <Box className="form-container">
+      <Typography variant="h4" className="form-title">
+        Login
+      </Typography>
     <Box component="form" onSubmit={formik.handleSubmit}>
       <TextField
         fullWidth
@@ -67,6 +71,7 @@ const Login = () => {
       <Button color="primary" variant="contained" fullWidth type="submit" sx={{ mt: 3 }} onClick={() => handleLogin(formik.values)}>
         Login
       </Button>
+    </Box>
     </Box>
   );
 };

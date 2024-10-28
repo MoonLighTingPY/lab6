@@ -53,6 +53,7 @@ const BookList = () => {
           onChange={e => setSearchTerm(e.target.value)}
           sx={{ marginRight: '16px' }}
         />
+        <Box display="flex" justifyContent="space-between" mb={4}>
         <CustomSelect
           value={filter}
           onChange={e => setFilter(e.target.value)}
@@ -67,15 +68,17 @@ const BookList = () => {
           items={orderItems}
         />
       </Box>
+      </Box>
       <Grid container spacing={4}>
         {books.map((book) => (
           <Grid item xs={12} sm={6} md={4} key={book.id}>
-            <Card>
+            <Card sx={{ borderRadius: '16px 16px 0 0', boxShadow: 'none' }}>
               <CardMedia
                 component="img"
-                height="140"
+                height="200"
                 image={book.picture}
                 alt={book.title}
+                sx={{ borderRadius: '16px 16px 0 0' }}
               />
               <CardContent>
                 <Typography variant="h6">{book.title}</Typography>

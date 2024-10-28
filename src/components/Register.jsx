@@ -37,6 +37,10 @@ const Register = () => {
   });
 
   return (
+    <Box className="form-container">
+      <Typography variant="h4" className="form-title">
+        Register
+      </Typography>
     <Box component="form" onSubmit={formik.handleSubmit}>
       <TextField
         fullWidth
@@ -105,6 +109,7 @@ const Register = () => {
       <Button color="primary" variant="contained" fullWidth type="submit" sx={{ mt: 3 }}>
         Register
       </Button>
+    </Box>
     </Box>
   );
 };

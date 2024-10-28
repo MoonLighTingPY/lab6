@@ -31,6 +31,8 @@ export const checkUserExists = createAsyncThunk(
     }
   );
 
+export const loginError = (state) => state.user.loginError;
+
   const userSlice = createSlice({
     name: 'user',
     initialState: {

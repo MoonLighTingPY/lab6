@@ -45,13 +45,14 @@ const BookDetails = () => {
   };
 
   return (
-    <Box mt={4}>
-      <Card>
+    <Box mt={4} sx={{ maxWidth: 400, margin: 'auto' }}>
+      <Card sx={{ borderRadius: '16px 16px 0 0', boxShadow: 'none' }}>
         <CardMedia
           component="img"
           height="300"
-          image={book.picture} // Assuming 'picture' field exists in books.json
+          image={book.picture}
           alt={book.title}
+          sx={{ borderRadius: '16px 16px 0 0' }}
         />
         <CardContent>
           <Typography variant="h4">{book.title}</Typography>
@@ -60,7 +61,7 @@ const BookDetails = () => {
           <Typography>Price: ${book.price}</Typography>
           <Typography>Description: {book.description}</Typography>
           <Typography>Category: {book.category}</Typography>
-          <Typography>Stock: {book.stock[selectedColor]} ({selectedColor})</Typography> {/* Display stock for selected color */}
+          <Typography>Stock: {book.stock[selectedColor]} ({selectedColor})</Typography>
         </CardContent>
       </Card>
       <Box mt={4}>
@@ -87,7 +88,7 @@ const BookDetails = () => {
       </Box>
       {feedback && (
         <Box mt={2}>
-          <Alert severity={book.stock[selectedColor] > 0 ? 'success' : 'error'}>{feedback}</Alert>
+          <Alert severity="info">{feedback}</Alert>
         </Box>
       )}
     </Box>
