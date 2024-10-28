@@ -1,6 +1,6 @@
 import express, { json } from 'express';
 import cors from 'cors';
-import { readFile } from 'fs/promises';
+import { readFile, writeFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -8,6 +8,7 @@ const app = express();
 
 app.use(cors());
 app.use(json());
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,6 +49,23 @@ app.get('/api/books/:id', async (req, res) => {
     return res.status(404).json({ error: 'Book not found' });
   }
   res.json(book);
+});
+
+app.post('/api/update-stock', async (req, res) => {
+  const { cart } = req.body;
+  let books = await getBooks();
+
+  cart.forEach(cartItem => {
+    const book = books.find(book => book.id === cartItem.id);
+    if (book) {
+      book.stock[cartItem.color] -= cartItem.quantity;
+    }
+  });
+
+  const filePath = path.join(__dirname, 'src/api/books.json');
+  await writeFile(filePath, JSON.stringify(books, null, 2), 'utf8');
+
+  res.status(200).send({ message: 'Stock updated successfully' });
 });
 
 import process from 'process';
