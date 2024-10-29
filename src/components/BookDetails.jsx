@@ -45,7 +45,7 @@ const BookDetails = () => {
   };
 
   return (
-    <Box mt={4} sx={{ maxWidth: 400, margin: 'auto' }}>
+    <Box mt={4} sx={{ maxWidth: 600, margin: 'auto' }}>
       <Card sx={{ borderRadius: '16px 16px 0 0', boxShadow: 'none' }}>
         <CardMedia
           component="img"
@@ -70,6 +70,7 @@ const BookDetails = () => {
           onChange={e => setSelectedColor(e.target.value)}
           label="Color"
           items={Object.keys(book.stock).map(color => ({ value: color, label: color }))}
+          sx={{ minWidth: '120px' }} // Set the same minWidth
         />
         <TextField
           label="Quantity"
@@ -77,7 +78,7 @@ const BookDetails = () => {
           value={quantity}
           onChange={e => setQuantity(Number(e.target.value))}
           inputProps={{ min: 1, max: book.stock[selectedColor] }}
-          sx={{ marginLeft: '16px' }}
+          sx={{ marginLeft: '16px', minWidth: '120px' }} // Set the same minWidth
         />
         <Button variant="contained" onClick={() => navigate(-1)} style={{ marginRight: '16px' }}>
           Back

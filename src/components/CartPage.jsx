@@ -43,15 +43,6 @@ const CartPage = () => {
     });
   }, [cart]);
 
-  useEffect(() => {
-    // Save cart data when the user logs in or registers
-    const handleUserChange = () => {
-      dispatch(saveCart(cart));
-    };
-
-    handleUserChange();
-  }, [cart, dispatch]);
-
   return (
     <Box mt={4} sx={{ maxWidth: 1200, margin: 'auto' }}>
       <Typography variant="h4" gutterBottom className="welcome-text">
