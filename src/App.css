@@ -5,10 +5,14 @@
   box-sizing: border-box;
 }
 
+/* General Styles */
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
   color: #333;
-  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Colors */
@@ -34,8 +38,15 @@ h1, h2, h3, h4 {
   margin-bottom: 20px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 /* Button Styling */
 button, .MuiButton-containedPrimary {
+  cursor: pointer;
   background-color: var(--primary-color) !important;
   color: var(--secondary-color) !important;
   padding: 10px 20px !important;
@@ -46,6 +57,11 @@ button, .MuiButton-containedPrimary {
 
 button:hover, .MuiButton-containedPrimary:hover {
   background-color: #315e8a !important;
+}
+
+/* Custom Select */
+.MuiFormControl-root {
+  min-width: 150px;
 }
 
 /* Text Field Styling */
@@ -110,8 +126,77 @@ footer {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
 .form-content {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+/* Success Page */
+.success-page {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.success-page .MuiTypography-h4 {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.success-page .MuiTypography-body1 {
+  margin-top: 20px;
+  color: #666;
+}
+
+.success-page .MuiButton-contained {
+  margin-top: 40px;
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.success-page .MuiButton-contained:hover {
+  background-color: #45a049;
+}
+
+/* Cart Page */
+.cart-page {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.cart-page .MuiCard-root {
+  margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-page .MuiCardMedia-root {
+  border-radius: 16px 16px 0 0;
+}
+
+.cart-page .MuiCardContent-root {
+  padding: 20px;
+}
+
+.cart-page .MuiTypography-h5 {
+  font-weight: bold;
+}
+
+.cart-page .MuiTypography-body2 {
+  color: #666;
+}
+
+.cart-page .MuiButton-containedPrimary {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.cart-page .MuiButton-containedPrimary:hover {
+  background-color: #1565c0;
+}
+
+.cart-page .MuiAlert-root {
+  margin-top: 20px;
 }

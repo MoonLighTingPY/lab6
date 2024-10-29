@@ -14,9 +14,9 @@
       "green"
     ],
     "stock": {
-      "red": 9,
-      "blue": 5,
-      "green": 2
+      "red": 0,
+      "blue": 0,
+      "green": 0
     }
   },
   {
@@ -36,7 +36,7 @@
     "stock": {
       "black": 0,
       "gold": 3,
-      "silver": 3
+      "silver": 15
     }
   },
   {

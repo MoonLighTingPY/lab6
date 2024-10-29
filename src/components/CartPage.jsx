@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { incrementQuantity, decrementQuantity, removeFromCart } from '../redux/cartSlice';
-import { saveCart } from '../redux/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Typography, Box, Grid, Alert, Card, CardContent, CardMedia, IconButton } from '@mui/material';
 import { Add, Remove, Delete } from '@mui/icons-material';
@@ -44,7 +43,7 @@ const CartPage = () => {
   }, [cart]);
 
   return (
-    <Box mt={4} sx={{ maxWidth: 1200, margin: 'auto' }}>
+    <Box className="cart-page" mt={4} sx={{ maxWidth: 1200, margin: 'auto' }}>
       <Typography variant="h4" gutterBottom className="welcome-text">
         Your Cart
       </Typography>
@@ -68,7 +67,7 @@ const CartPage = () => {
                     <Typography variant="body2" color="textSecondary">By: {item.author}</Typography>
                     <Typography variant="body2">Price: ${item.price}</Typography>
                     <Typography variant="body2">Quantity: {item.quantity}</Typography>
-                    <Box display="flex" alignItems="center" mt={2}>
+                    <Box display="flex" justifyContent="space-between" mt={2}>
                       <IconButton onClick={() => handleDecrement(item)}><Remove /></IconButton>
                       <Typography variant="body2" mx={2}>{item.quantity}</Typography>
                       <IconButton onClick={() => handleIncrement(item)} disabled={item.quantity >= item.stock}><Add /></IconButton>
@@ -79,7 +78,7 @@ const CartPage = () => {
               </Grid>
             ))}
           </Grid>
-          <Box mt={3} textAlign="right">
+          <Box mt={4} textAlign="center">
             <Typography variant="h6">Total Amount: ${totalAmount.toFixed(2)}</Typography>
             <Button variant="contained" component={Link} to="/" style={{ marginRight: '10px' }}>
               Back to Catalog

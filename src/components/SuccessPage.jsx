@@ -20,12 +20,12 @@ const SuccessPage = () => {
   }, [cart]);
 
   return (
-    <Box textAlign="center" mt={5}>
+    <Box className="success-page">
       <Typography variant="h4">Checkout Successful!</Typography>
-      <Typography variant="body1" mt={2}>
+      <Typography variant="body1">
         Thank you for your purchase! Your order has been confirmed.
       </Typography>
-      <Button variant="contained" component={Link} to="/" sx={{ mt: 4 }}>
+      <Button variant="contained" component={Link} to="/">
         Back to Catalog
       </Button>
     </Box>

@@ -3,9 +3,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextField, Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../redux/cartSlice';
 
 function CheckoutPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -23,6 +26,7 @@ function CheckoutPage() {
       address: Yup.string().required('Address is required'),
     }),
     onSubmit: (values) => {
+      dispatch(clearCart());
       navigate('/success');
     },
   });

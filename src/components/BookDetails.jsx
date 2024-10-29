@@ -22,8 +22,16 @@ const BookDetails = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/api/books/${id}`)
       .then(response => {
-        setBook(response.data);
-        setSelectedColor(response.data.colors[0]); // Set default color
+        const bookData = response.data;
+        setBook(bookData);
+
+        const availableColors = Object.keys(bookData.stock).filter(color => bookData.stock[color] > 0);
+        if (availableColors.length > 0) {
+          setSelectedColor(availableColors[0]); // Set default color to the first available color
+        } else {
+          setFeedback('There is nothing in stock for this book.');
+          setSelectedColor(availableColors[0]); // Set default color to the first available color
+        }
       })
       .catch(error => console.error('Error fetching book details:', error));
   }, [id]);
@@ -34,7 +42,7 @@ const BookDetails = () => {
     const cartItem = cart.find(item => item.id === book.id && item.color === selectedColor);
     const totalBooksInCart = cart.reduce((total, item) => total + item.quantity, 0);
     const updatedQuantity = cartItem ? cartItem.quantity + quantity : quantity;
-  
+
     if (updatedQuantity > book.stock[selectedColor]) {
       const availableColors = Object.keys(book.stock).filter(color => book.stock[color] > 0 && color !== selectedColor);
       setFeedback(`You cannot add more of this book in ${selectedColor} than is in stock. Available colors: ${availableColors.join(', ')}`);
@@ -83,7 +91,18 @@ const BookDetails = () => {
         <Button variant="contained" onClick={() => navigate(-1)} style={{ marginRight: '16px' }}>
           Back
         </Button>
-        <Button variant="contained" color="primary" onClick={handleAddToCart}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleAddToCart}
+          disabled={book.stock[selectedColor] <= 0}
+          sx={{
+            backgroundColor: book.stock[selectedColor] <= 0 ? 'grey.500' : 'primary.main',
+            '&:hover': {
+              backgroundColor: book.stock[selectedColor] <= 0 ? 'grey.500' : 'primary.dark',
+            },
+          }}
+        >
           Add to Cart
         </Button>
       </Box>
